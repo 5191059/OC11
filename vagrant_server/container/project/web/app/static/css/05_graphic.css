@@ -1,0 +1,26 @@
+/* LINK */
+.graphic_hex::after { background: black; }
+.graphic_hex .menu_hex_text { color: white; }
+.graphic_hex:hover .menu_hex_text { color: black; }
+
+/* REQUEST */
+.ibox input[type=text] { color: gray; }
+.ibox input[type=text]:focus { border-color: gray; }
+
+input::placeholder { color: gray; }
+input:-ms-input-placeholder { color: gray; }
+input::-ms-input-placeholder { color: gray; }
+
+.sbox { color: gray; }
+.sbox:focus { border-color: gray; }
+
+#graphic_NVIDIA_value{
+    display: none;
+}
+
+#graphic_AMD_value{
+    display: none;
+}
+
+.pc1 { display: flex;}
+.pc2 { display: flex;}

@@ -1,0 +1,130 @@
+{
+    "home": "https://jisaku.com",
+    "stores": {
+        "Amazon.co.jp": "amazon",
+        "価格.com": "kakaku",
+        "ソフマップ.com": "sofmap",
+        "ドスパラ": "dospara"
+    },
+    "items": {
+        "cpu": {
+            "link": "/cpu/popular",
+            "CNAME": {
+                "プロセッサー・ベース動作周波数": "clock",
+                "クロック周波数": "clock",
+                "世代": "GEN",
+                "マルチスレッド": "multi_thread",
+                "二次キャッシュ": "cache_2nd",
+                "三次キャッシュ": "cache_3rd",
+                "L2キャッシュ": "cache_2nd",
+                "L3キャッシュ": "cache_3rd",
+                "ターボブースト": "turbo_clock",
+                "ターボ・ブースト利用時の最大周波数": "turbo_clock",
+                "コアの数": "cores",
+                "コア数": "cores",
+                "スレッド数": "thread",
+                "スレッドの数": "thread",
+                "ソケット形状": "socket",
+                "対応ソケット": "socket",
+                "TDP": "TDP"
+            }
+        },
+        "memory": {
+            "link": "/memory/popular",
+            "CNAME": {
+                "容量": "capacity",
+                "インターフェイス": "interface",
+                "枚数": "piece",
+                "メモリ規格": "mem_stndrd",
+                "モジュール規格": "mem_stndrd"
+            }
+        },
+        "gpu": {
+            "link": "/gpu/popular",
+            "CNAME": {
+                "CUDAコア数": "cuda",
+                "搭載チップ": "chip",
+                "バスインターフェイス": "bus_interface",
+                "メモリバス": "mem_bus",
+                "メモリ": "memory"
+            }
+        },
+        "cpu-cooler": {
+            "link": "/cpu-cooler/popular",
+            "CNAME": {
+                "タイプ": "type",
+                "厚さ": "thickness",
+                "高さ": "height",
+                "対応ソケット": "socket",
+                "幅": "width"
+            }
+        },
+        "motherboard": {
+            "link": "/motherboard/popular",
+            "CNAME": {
+                "オンボードオーディオ": "audio",
+                "チップセット": "chipset",
+                "crossfire": "crossfire",
+                "フォームファクタ": "formfactor",
+                "最大メモリー容量": "max_memory",
+                "オンボードLAN": "lan_speed",
+                "メモリスロット数": "memory_slot",
+                "SATAスロット数": "sata_slot",
+                "メモリタイプ": "memory_type",
+                "CPUソケット": "Socket"
+            }
+        },
+        "ssd": {
+            "link": "/ssd/popular",
+            "CNAME": {
+                "容量": "capacity",
+                "インターフェイス": "interface",
+                "speed-read": "speed-read",
+                "speed-write": "speed-write"
+            }
+        },
+        "hdd": {
+            "link": "/hdd/popular",
+            "CNAME": {
+                "サイズ": "size",
+                "容量": "capacity",
+                "インターフェイス": "interface",
+                "回転数": "rpm",
+                "thickness": "thickness"
+            }
+        },
+        "power-supply": {
+            "link": "/power-supply/popular",
+            "CNAME": {
+                "80PLUS認証": "80PLUS",
+                "電源容量": "capacity",
+                "プラグイン対応": "plugin_available",
+                "対応規格": "standard"
+            }
+        },
+        "pc-case": {
+            "link": "/pc-case/popular",
+            "CNAME": {
+                "2.5インチシャドウベイ": "bay_cnt2.5",
+                "3.5インチシャドウベイ": "bay_cnt3.5",
+                "5.25インチベイ": "bay_cnt5.25",
+                "対応ファクター": "factor_available",
+                "前面インターフェイス": "interface",
+                "高さ": "height",
+                "重量": "weight",
+                "幅": "width"
+            }
+        },
+        "case-fan": {
+            "link": "/case-fan/popular",
+            "CNAME": {
+                "コネクタ": "connector",
+                "ファンサイズ": "size",
+                "LEDライティング対応": "led_writing",
+                "最大ノイズレベル": "noise",
+                "最大回転数": "max_rpm",
+                "PWM": "PWM"
+            }
+        }
+    }
+}

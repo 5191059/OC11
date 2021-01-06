@@ -1,0 +1,46 @@
+kind: pipeline
+type: docker
+name: default
+steps:
+  - name: test
+    image: docker:dind
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+     - docker build -t docker ./
+     - docker tag docker:2.1 docker:latest
+     - docker push docker:2.1
+     - docker push docker:latest
+
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host: host
+      username: username
+      password: password
+      port: port
+      script:
+        - docker pull docker:latest
+        - docker-compose -f /~/docker-compose.yml build container
+        - docker-compose -f /~/docker-compose.yml up -d container
+  
+  - name: end notify
+    image: plugins/slack
+    settings:
+      webhook: webhook
+      channel: drone
+      link_names: true
+      template: >
+        {{#success build.status}}
+          build {{build.number}} container succeeded. Good job.(成功だぜ) <@john.doe>
+        {{else}}
+          build {{build.number}} failed. Fix me please.(た、たすけて) <@channelname> <@someone>
+        {{/success}}
+
+
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock

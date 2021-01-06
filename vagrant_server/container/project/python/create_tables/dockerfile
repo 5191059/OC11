@@ -1,0 +1,57 @@
+FROM python:3.8.3-buster
+USER root
+
+#文字コード日本語化
+ENV LANGUAGE ja_JP:ja
+ENV TZ JST-9
+ENV TERM xterm
+
+
+RUN apt update && apt install -y lsb-release \
+    && apt remove -y libmariadb-dev-compat libmariadb-dev
+
+#pythonからMySQLにデータを挿入するためのモジュール
+RUN wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-common_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/libmysqlclient21_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-community-client-core_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-community-client_8.0.18-1debian10_amd64.deb \
+    https://dev.mysql.com/get/Downloads/MySQL-8.0/libmysqlclient-dev_8.0.18-1debian10_amd64.deb
+
+RUN dpkg -i mysql-common_8.0.18-1debian10_amd64.deb \
+    libmysqlclient21_8.0.18-1debian10_amd64.deb \
+    mysql-community-client-core_8.0.18-1debian10_amd64.deb \
+    mysql-community-client_8.0.18-1debian10_amd64.deb \
+    libmysqlclient-dev_8.0.18-1debian10_amd64.deb
+
+RUN apt search mysql-client
+
+#pipのアップグレード
+RUN /usr/local/bin/python -m pip install --upgrade pip
+
+RUN pip3 install beautifulsoup4 && \
+    pip3 install SQLAlchemy && \
+    pip3 install requests && \
+    pip3 install pymysql && \
+    pip3 install html.parser && \
+    pip3 install cryptography && \
+    pip3 install lxml && \
+    pip3 install mysqlclient
+
+RUN mkdir /worker && \
+    mkdir /worker/pythonsc && \
+    mkdir /worker/pythonsc/cord && \
+    mkdir /worker/pythonsc/cord/cord && \
+    mkdir /worker/pythonsc/cord/main && \
+    mkdir /worker/pythonsc/cord/module && \
+    mkdir /worker/pythonsc/cord/output
+
+COPY ./cord/main /worker/pythonsc/cord/main
+COPY ./cord/cord /worker/pythonsc/cord/cord
+COPY ./cord/module /worker/pythonsc/cord/module
+COPY ./cord/output /worker/pythonsc/cord/output
+COPY ./main.py /worker/pythonsc
+COPY ./wait-for-pdb.sh /worker/pythonsc
+WORKDIR /worker/pythonsc
+# CMD ["python3","/worker/pythonsc/main.py"]
+# CMD ["/worker/pythonsc/wait-for-pdb.sh"]
+# CMD ["/worker/pythonsc/wait-for-pdb.sh", "pdb", "/usr/bin/python ", "/worker/pythonsc/main.py"]

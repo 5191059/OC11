@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>Mechanic Garage</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="pc, parts, cpu, cooler, motherboard">
+    <link rel="stylesheet" href="../../static/css/sub.css">
+    <link rel="stylesheet" href="../../static/css/button.css">
+    <link rel="stylesheet" href="../../static/css/top.css">
+    <link rel="stylesheet" href="../../static/css/10_power.css">
+  </head>
+  
+  <body>
+    <div class="wrap" id="wrap">
+      <div class="background" id="background">
+        <div class="hello">
+          <p class="paint_1">POWER</p>
+          <p class="paint_2">Select the parts you want to use.</p>
+        </div>
+
+        <div class="request">
+          <div class="sg1"  id="Search1">
+            <div class="ibox"><input type="text" placeholder="Lowest Price" id="power_low_price"></div>
+            <div class="ibox"><input type="text" placeholder="Highest Price" id="power_high_price"></div>
+          </div>
+          <div class="sg2" id="Search2">
+            <select class="sbox" id="power_wat_value">
+              <option value="">Total Wat</option>
+              <option value="300,400,450">~499W</option>
+              <option value="500,550">500th W</option>
+              <option value="600,650">600th W</option>
+              <option value="700,750">700th W</option>
+              <option value="800,850">800th W</option>
+              <option value="1000,1050,1200">1000th W</option>
+            </select>
+            <select class="sbox" id="power_certification_value">
+              <option value="">80PLUS認証</option>
+                <option value="●認証：80PLUS STANDARD">80PLUS STANDARD</option>
+                <option value="●認証：80PLUS BRONZE">80PLUS BRONZE</option>
+                <option value="●認証：80PLUS GOLD">80PLUS GOLD</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sub">
+          {% for power in lst %}
+          <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
+            <div class="card">
+              <div class="hex">
+                <img class="hex_image" src={{power.image}} alt="">
+              </div>
+              <div class="info">
+                <h1 class="name">{{power.product_name}}</h1>
+                <h3 class="price">¥{{power.price}}</h3>
+                <h2 class="text">{{power.info}}</h2>
+              </div>
+            </div>
+          </button>
+          {% endfor %}
+        </div>
+        <p class="pagetop"><a href="#wrap">▲</a></p>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="../../static/js/top.js?ver=1129"></script>
+    <script src="../../static/js/power.js?ver=2020101655"></script>
+  </body>
+</html>

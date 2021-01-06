@@ -1,0 +1,59 @@
+version: '3.6'
+networks:
+  network:
+    name: network
+    ipam:
+      config:
+        - subnet: 0.0.0.0/32
+
+services:      
+  container1:
+    build: ./productdb
+    restart: always
+    container_name: container1
+    volumes: 
+      - ./initdb.d:/docker-entrypoint-initdb.d
+      # - ./data:/var/lib/mysql
+      # Mysqlコンテナの永続化は初回起動からできない
+      # 一度起動したのちにコンテナをdownしてコメントを外し
+      # もう一度建て直す
+    environment: 
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'db'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      TZ: "Asia/Tokyo"
+    networks:
+      - network
+
+  container2:
+    build: ./python/create_tables
+    container_name: container2
+    depends_on:
+      - container1
+    tty: true
+    command: ["/worker/pythonsc/wait-for-container1.sh", "container1", "python ", "/worker/pythonsc/main.py"]
+    networks:
+      - network
+  
+  container3:
+    build: ./web
+    container_name: container3
+    tty: true
+    ports:
+      - ports
+      # 外から:コンテナ
+    networks:
+      - network
+
+  container4:
+    build: ./container4
+    container_name: container4
+    privileged: true
+    ports:
+      - ports
+    volumes:
+      - volumes
+    networks:
+      - network
+

@@ -1,0 +1,25 @@
+/* ADD BUTTON */
+.btn1 {
+	display: block;
+	position: relative;
+	width: 120px;
+	height: 65.5px;
+	padding:  2.5% 5%;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	background: white;
+  border:2px solid black;
+  /* border-radius: 40px; */
+}
+
+.btn1:hover {
+	background: #F8F8FF;
+	color: black;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.text input {
+  margin: 5px;
+}
