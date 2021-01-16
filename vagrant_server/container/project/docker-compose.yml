@@ -13,10 +13,7 @@ services:
     container_name: container1
     volumes: 
       - ./initdb.d:/docker-entrypoint-initdb.d
-      # - ./data:/var/lib/mysql
-      # Mysqlコンテナの永続化は初回起動からできない
-      # 一度起動したのちにコンテナをdownしてコメントを外し
-      # もう一度建て直す
+      - data:/var/lib/mysql
     environment: 
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'db'
@@ -56,4 +53,9 @@ services:
       - volumes
     networks:
       - network
+
+volumes:
+  data:
+    name: data-stor
+    driver: local
 
