@@ -49,6 +49,7 @@ function calc_sum(){
     var cpu_cooler_price = document.getElementById("cooler_price");
     var memory_price = document.getElementById("memory_price");
     var mother_price = document.getElementById("mother_price");
+    var graphic_price = document.getElementById("graphic_price");
     var ssd_price = document.getElementById("ssd_price");
     var hdd_price = document.getElementById("hdd_price");
     var case_price = document.getElementById("case_price");
@@ -57,8 +58,8 @@ function calc_sum(){
 
 
     sum.innerText = 0
-    let pricelst = [cpu_price, cpu_cooler_price, memory_price,
-        mother_price, ssd_price, hdd_price, case_price, power_price, case_fan_price]
+    let pricelst = [cpu_price, cpu_cooler_price, memory_price, mother_price, 
+        graphic_price, ssd_price, hdd_price, case_price, power_price, case_fan_price]
     
     for(let i=0; i < pricelst.length; i++){
         if(isNaN(parseInt(pricelst[i].innerText.replace('¥', ''), 10))){

@@ -22,15 +22,36 @@ class User(UserMixin):
         #fetchone()は１レコード　例 {1:a}
         if not user:
             return None
+        
+        #fetchall()
 
+        # for i in users:
+        #     user = i
+
+        # user = users[0] 
         
         user = User(
-            id_=user['id'], name=user['name'], email=user['email'], profile_pic=user['profile_pic']
+            id_=user['user_id'], name=user['user_name'], email=user['user_email'], profile_pic=user['user_profile_pic']
         )
 
         con.close()
 
         return user
+    
+    @staticmethod
+    def get_client(user_id):
+        con = get_db()
+        db = con.cursor()
+        sql = "SELECT client FROM Users WHERE user_id = %s"
+        db.execute(sql, (user_id))
+        client = db.fetchone()
+
+        if not client:
+            return None
+        
+        con.close()
+
+        return client
 
     @staticmethod
     def create(id_, name, email, profile_pic):

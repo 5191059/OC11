@@ -8,12 +8,21 @@
     <link rel="stylesheet" href="../../static/css/main.css?ver=1116">
     <link rel="stylesheet" href="../../static/css/link.css">
     <link rel="stylesheet" href="../../static/css/top.css">
+    <link rel="stylesheet" href="../../static/css/button.css">
     <link rel="stylesheet" href="../../static/css/06_ssd.css">
   </head>
   
   <body>
     <div class="wrap" id="wrap">
       <div class="background" id='background'>
+
+        <a class="acp" href="/login">
+          <div class="acb">
+            <img class="acb_img" src={{user_icom}} onerror="this.style.display='none'">
+            <div class="acb_text">LOG IN</div>
+          </div>
+        </a>
+        
         <div class="link">
           <div class="parent">
             <div class="menu_hex home_hex"><a href="index"><div class="menu_hex_text">HOME</div></a></div>
@@ -21,6 +30,21 @@
             <div class="menu_hex accessory_hex"><div class="menu_hex_text">ACCESSORY</div></div>
             <div class="menu_hex user_hex"><div class="menu_hex_text">USER</div></div>
             <div class="menu_hex contact_hex"><div class="menu_hex_text">CONTACT</div></div>
+          </div>
+
+          <div class="hc1">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="hc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="pc1">
@@ -42,11 +66,15 @@
             <div class="trc_hex"></div>
             <div class="menu_hex monitor_hex"><a href="11m"><div class="menu_hex_text">MONITOR</div></a></div>
             <div class="menu_hex key_hex"><a href="12m"><div class="menu_hex_text">KEY BOARD</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
           <div class="ac2">
             <div class="trc_hex"></div>
             <div class="menu_hex mouse_hex"><a href="13m"><div class="menu_hex_text">MOUSE</div></a></div>
             <div class="menu_hex speaker_hex"><a href="14m"><div class="menu_hex_text">SPEAKER</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="uc1">
@@ -54,6 +82,14 @@
             <div class="trc_hex"></div>
             <div class="menu_hex account_hex"><a href="account"><div class="menu_hex_text">ACCOUNT</div></a></div>
             <div class="menu_hex favorite_hex"><a href="favorite"><div class="menu_hex_text">FAVORITE</div></a></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="uc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="cc1">
@@ -61,16 +97,9 @@
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="menu_hex member_hex"><a href="member"><div class="menu_hex_text">MEMBER</div></a></div>
-          </div>
-
-          <div class="trc1">
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
             <div class="trc_hex"></div>
           </div>
-          <div class="trc2">
+          <div class="cc2">
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
@@ -94,25 +123,15 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="ssd_connect_value">
               <option value="">Connect</option>
-              <option value="●接続：M.2 2280 (PCIe 3.0 x4 NVMe)">M.2 2280 (PCIe 3.0 x4 NVMe)</option>
-              <option value="●接続：M.2 2280 (NVMe)">M.2 2280 (NVMe)</option>
-              <option value="●接続：M.2 2280 (PCIe 4.0 x4 NVMe)">M.2 2280 (PCIe 4.0 x4 NVMe)</option>
-              <option value="●接続：M.2 2280 (SATA)">M.2 2280 (SATA)</option>
-              <option value="●接続：PCI Express 3.0 x8">PCI Express 3.0 x8</option>
-              <option value="●接続：SATA3">SATA3</option>
+              {% for pro_info in info.interface %}
+                <option value="Connect:{{pro_info.interface}}">Connect:{{pro_info.interface}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="ssd_capacity_value">
               <option value="">Capacity</option>
-                <option value="120GB">120GB</option>
-                <option value="240GB">240GB</option>
-                <option value="250GB">250GB</option>
-                <option value="256GB">256GB</option>
-                <option value="480GB">480GB</option>
-                <option value="500GB">500GB</option>
-                <option value="512GB">512GB</option>
-                <option value="1TB">1TB</option>
-                <option value="2TB">2TB</option>
-                <option value="4TB">4TB</option>
+              {% for pro_info in info.capacity %}
+                <option value="Capacity:{{pro_info.capacity}}">Capacity:{{pro_info.capacity}}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
@@ -121,29 +140,31 @@
 
           {% for ssd in lst %}
           <div class="card">
-            <!-- <div class="triangle1">
-              <img class="dospara" src="../../static/images/Dicom.png">
-              <img class="amazon" src="../../static/images/Aicom.png">
-            </div> -->
-            <!-- <div class="triangle2">
+            {% if current_user.is_authenticated %}
+            <div class="triangle2" onclick="favorite(this.id, 'ssdID', '{{client_id}}');">
               <img class="like" src="../../static/images/like-off.png">
               <img class="liked" src="../../static/images/like-on.png">
-            </div> -->
+            </div>
+            {% endif %}
             <div class="hex">
               <a href={{ssd.url}}><img class="hex_image" src={{ssd.image}} alt=""></a>
             </div>
             <div class="info">
               <h1 class="name">{{ssd.product_name}}</h1>
-              <div class="display_selectedItem">
-                <img class="selected_img" src="../../static/images/like-on.png">
-                ¥{{ssd.price}}
+              <div class="display_selectedItem" onclick="change_money(this.id);">
+                <img class="selected_img" src="../../static/images/d.png">
+                ¥{{ssd.price[1][1]}}
               </div>
               <ul class="select_box">
-                <li><img src="../../static/images/like-on.png">¥{{ssd.price}}</li>
-                <li><img src="../../static/images/Aicom.png">¥{{ssd.price}}</li>
-                <li><img src="../../static/images/Dicom.png">¥{{ssd.price}}</li>
+                <li><img src="../../static/images/d.png">¥{{ssd.price[1][1]}}</li>
+                <li><img src="../../static/images/a.png">¥{{ssd.price[0][1]}}</li>
+                <li><img src="../../static/images/k.png">¥{{ssd.price[2][1]}}</li>
+                <li><img src="../../static/images/s.png">¥{{ssd.price[3][1]}}</li>
               </ul>
-              <h2 class="text">{{ssd.info}}</h2>
+              <h2 class="text">
+                <p>Connect:{{ssd.info[0]}}</p>
+                <p>Capacity:{{ssd.info[1]}}</p>
+              </h2>
             </div>
           </div>
           {% endfor %}
@@ -152,6 +173,9 @@
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>
     </div>
+    {% if current_user.is_authenticated %}
+    <script src="../../static/js/favorite.js?ver=20210115"></script>
+    {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="../../static/js/ssd_main.js?ver=1131"></script>

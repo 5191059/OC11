@@ -27,15 +27,16 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="case_collesMB_value">
               <option value="">対応MB規格</option>
-              <option value="：E-ATX,/ E-ATX">E-ATX</option>
-              <option value="：ATX,/ ATX">ATX</option>
-              <option value="：MicroATX,/ MicroATX">MicroATX</option>
-              <option value="：Mini-ITX,/ Mini-ITX">Mini-ITX</option>
+              <option value=":E-ATX, ,E-ATX">E-ATX</option>
+              <option value=":ATX, ,ATX">ATX</option>
+              <option value=":MicroATX, ,MicroATX">MicroATX</option>
+              <option value=":Mini-ITX, ,Mini-ITX">Mini-ITX</option>
             </select>
           </div>
         </div>
 
         <div class="sub">
+
           {% for case in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -44,12 +45,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{case.product_name}}</h1>
-                <h3 class="price">¥{{case.price}}</h3>
-                <h2 class="text">{{case.info}}</h2>
+                <h3 class="price">¥{{case.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>対応MB規格:{{case.info[0]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+          
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

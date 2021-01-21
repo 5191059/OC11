@@ -1,4 +1,19 @@
 window.onload = function() {
+  var tmp = document.getElementsByClassName("info");
+  var tmp2 = document.getElementsByClassName("hex");
+  var tmp3 = document.getElementsByClassName('select_box');
+  var tmp4 = document.getElementsByClassName('card');
+  var tmp5 = document.getElementsByClassName('display_selectedItem');
+  var moji = "memoryID";
+  
+  for(var i=0;i<=tmp.length-1;i++){
+      //id追加
+      tmp[i].setAttribute("id",moji+i);
+      tmp2[i].setAttribute("id",'hex' + i);
+      tmp3[i].setAttribute("id","price" + i)
+      tmp4[i].setAttribute("id", i)
+      tmp5[i].setAttribute("id", i)
+  }
     height_repair();
   };
   
@@ -16,7 +31,6 @@ window.onload = function() {
       searchWord = function(){
         var   search_standardText = $('#memory_standard_value').val(),
               search_capacityText = $('#memory_capacity_value').val(),
-              search_speedText = $('#memory_speed_value').val(),
               search_low_price = $('#memory_low_price').val(),
               search_high_price = $('#memory_high_price').val(),
               targetText,
@@ -59,11 +73,7 @@ window.onload = function() {
           // 検索対象となるリストに入力された文字列が存在するかどうかを判断
           if (targetText.indexOf(search_standardText) != -1) {
             if (targetText.indexOf(search_capacityText) != -1) {
-              if (targetText.indexOf(search_speedText) != -1) {
-                    ; //  何もしない
-              } else {
-                $(this).addClass('hidden');
-              }
+                ; //  何もしない
             } else {
               $(this).addClass('hidden');
             }
@@ -74,10 +84,9 @@ window.onload = function() {
         height_repair();
       };
 
-      searchWord = function(){
+      searchWord2 = function(){
         var   search_standardText = $('#memory_standard_value').val(),
               search_capacityText = $('#memory_capacity_value').val(),
-              search_speedText = $('#memory_speed_value').val(),
               search_low_price = $('#memory_low_price').val(),
               search_high_price = $('#memory_high_price').val(),
               targetText,
@@ -90,12 +99,8 @@ window.onload = function() {
   
           // 検索対象となるリストに入力された文字列が存在するかどうかを判断
           if (targetText.indexOf(search_standardText) != -1) {
-            if (targetText.indexOf(search_capacityText) != -1) {
-              if (targetText.indexOf(search_speedText) != -1) {
-                $(this).removeClass('hidden');
-              } else {
-                $(this).addClass('hidden');
-              }
+            if (targetText.indexOf(search_capacityText) != -1) {              
+              $(this).removeClass('hidden');
             } else {
               $(this).addClass('hidden');
             }
@@ -136,6 +141,5 @@ window.onload = function() {
       // searchWordの実行
       $('#Search1').on('change', searchWord);
       $('#Search2').on('change', searchWord2);
-      $('#Search3').on('change', searchWord2);
   });
   

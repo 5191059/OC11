@@ -27,30 +27,21 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="ssd_connect_value">
               <option value="">Connect</option>
-              <option value="●接続：M.2 2280 (PCIe 3.0 x4 NVMe)">M.2 2280 (PCIe 3.0 x4 NVMe)</option>
-              <option value="●接続：M.2 2280 (NVMe)">M.2 2280 (NVMe)</option>
-              <option value="●接続：M.2 2280 (PCIe 4.0 x4 NVMe)">M.2 2280 (PCIe 4.0 x4 NVMe)</option>
-              <option value="●接続：M.2 2280 (SATA)">M.2 2280 (SATA)</option>
-              <option value="●接続：PCI Express 3.0 x8">PCI Express 3.0 x8</option>
-              <option value="●接続：SATA3">SATA3</option>
+              {% for pro_info in info.interface %}
+                <option value="Connect:{{pro_info.interface}}">Connect:{{pro_info.interface}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="ssd_capacity_value">
               <option value="">Capacity</option>
-                <option value="120GB">120GB</option>
-                <option value="240GB">240GB</option>
-                <option value="250GB">250GB</option>
-                <option value="256GB">256GB</option>
-                <option value="480GB">480GB</option>
-                <option value="500GB">500GB</option>
-                <option value="512GB">512GB</option>
-                <option value="1TB">1TB</option>
-                <option value="2TB">2TB</option>
-                <option value="4TB">4TB</option>
+              {% for pro_info in info.capacity %}
+                <option value="Capacity:{{pro_info.capacity}}">Capacity:{{pro_info.capacity}}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
 
         <div class="sub">
+          
           {% for ssd in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -59,12 +50,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{ssd.product_name}}</h1>
-                <h3 class="price">¥{{ssd.price}}</h3>
-                <h2 class="text">{{ssd.info}}</h2>
+                <h3 class="price">¥{{ssd.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>Connect:{{ssd.info[0]}} Capacity:{{ssd.info[1]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

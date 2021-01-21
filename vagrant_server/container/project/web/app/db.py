@@ -10,11 +10,22 @@ from flask.cli import with_appcontext
 def get_db():
     g.conn = pymysql.connect(
                 host='host',
+                port=0,
                 user='user',
                 password='password',
-                db='db',
+                db='dbname',
                 cursorclass=pymysql.cursors.DictCursor
                 )
     return g.conn
 
+def get_prodb():
+    g.conn = pymysql.connect(
+                host='host',
+                port=0,
+                user='user',
+                password='password',
+                db='dbname',
+                cursorclass=pymysql.cursors.DictCursor
+                )
+    return g.conn
 

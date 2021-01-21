@@ -7,6 +7,7 @@
     <meta name="description" content="pc, parts, cpu, cooler, motherboard">
     <link rel="stylesheet" href="../../static/css/link.css">
     <link rel="stylesheet" href="../../static/css/member.css">
+    <link rel="stylesheet" href="../../static/css/button.css">
   </head>
   
   <body id="body">
@@ -17,6 +18,14 @@
     </div>
     <div class="wrap">
       <div class="background">
+
+        <a class="acp" href="/login">
+          <div class="acb">
+            <img class="acb_img" src={{user_icom}} onerror="this.style.display='none'">
+            <div class="acb_text">LOG IN</div>
+          </div>
+        </a>
+        
         <div class="link">
           <div class="parent">
             <div class="menu_hex home_hex"><a href="index"><div class="menu_hex_text">HOME</div></a></div>
@@ -24,6 +33,21 @@
             <div class="menu_hex accessory_hex"><div class="menu_hex_text">ACCESSORY</div></div>
             <div class="menu_hex user_hex"><div class="menu_hex_text">USER</div></div>
             <div class="menu_hex contact_hex"><div class="menu_hex_text">CONTACT</div></div>
+          </div>
+
+          <div class="hc1">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="hc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="pc1">
@@ -45,11 +69,15 @@
             <div class="trc_hex"></div>
             <div class="menu_hex monitor_hex"><a href="11m"><div class="menu_hex_text">MONITOR</div></a></div>
             <div class="menu_hex key_hex"><a href="12m"><div class="menu_hex_text">KEY BOARD</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
           <div class="ac2">
             <div class="trc_hex"></div>
             <div class="menu_hex mouse_hex"><a href="13m"><div class="menu_hex_text">MOUSE</div></a></div>
             <div class="menu_hex speaker_hex"><a href="14m"><div class="menu_hex_text">SPEAKER</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="uc1">
@@ -57,6 +85,14 @@
             <div class="trc_hex"></div>
             <div class="menu_hex account_hex"><a href="account"><div class="menu_hex_text">ACCOUNT</div></a></div>
             <div class="menu_hex favorite_hex"><a href="favorite"><div class="menu_hex_text">FAVORITE</div></a></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="uc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="cc1">
@@ -64,16 +100,9 @@
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="menu_hex member_hex"><a href="member"><div class="menu_hex_text">MEMBER</div></a></div>
-          </div>
-
-          <div class="trc1">
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
             <div class="trc_hex"></div>
           </div>
-          <div class="trc2">
+          <div class="cc2">
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
@@ -89,44 +118,40 @@
 
         <div class="mems">
           <div class="mem_card NM">
-            <div class="hex"><img class="hex_img" src="#"></div>
+            <div class="hex"><img class="hex_img" src="../../static/images/m.png"></div>
             <p class="name">Naoya Matsubara</p>
             <p class="job">Network Engineer
               <br>Project Manager
               <br>Designer
             </p>
-            <a href="#"><img class="github" src="../../static/images/Gicom.png"></a>
-            <!-- <a href="#"><img class="twitter" src="../../static/images/Ticom.png"></a> -->
+            <a href="https://github.com/5191037"><img class="github" src="../../static/images/Gicom.png"></a>
           </div>
 
           <div class="mem_card TO">
-            <div class="hex"><img class="hex_img" src="#"></div>
+            <div class="hex"><img class="hex_img" src="../../static/images/Okada.jpg"></div>
             <p class="name">Takafumi Okada</p>
             <p class="job">Network Engineer
               <br>Programmer
             </p>
-            <a href="#"><img class="github" src="../../static/images/Gicom.png"></a>
-            <!-- <a href="#"><img class="twitter" src="../../static/images/Ticom.png"></a> -->
+            <a href="https://github.com/5191059"><img class="github" src="../../static/images/Gicom.png"></a>
           </div>
 
           <div class="mem_card MT">
-            <div class="hex"><img class="hex_img" src="#"></div>
-            <p class="name">Masaya Tsuchiya</p>
+            <div class="hex"><img class="hex_img" src="../../static/images/Tsuchiya.png"></div>
+            <p class="name">Masaki Tsuchiya</p>
             <p class="job">Network Engineer
               <br>Programmer
             </p>
-            <a href="#"><img class="github" src="../../static/images/Gicom.png"></a>
-            <!-- <a href="#"><img class="twitter" src="../../static/images/Ticom.png"></a> -->
+            <a href="https://github.com/MT-0624"><img class="github" src="../../static/images/Gicom.png"></a>
           </div>
 
           <div class="mem_card SY">
-            <div class="hex"><img class="hex_img" src="#"></div>
+            <div class="hex"><img class="hex_img" src="../../static/images/Sora.png"></div>
             <p class="name">Sora Yamauchi</p>
             <p class="job">Network Engineer
               <br>Infrastructure Engineer
             </p>
-            <a href="#"><img class="github" src="../../static/images/Gicom.png"></a>
-            <!-- <a href="#"><img class="twitter" src="../../static/images/Ticom.png"></a> -->
+            <a href="https://github.com/sorayamauti"><img class="github" src="../../static/images/Gicom.png"></a>
           </div>
         </div>
 

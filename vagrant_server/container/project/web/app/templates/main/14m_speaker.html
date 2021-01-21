@@ -8,12 +8,21 @@
     <link rel="stylesheet" href="../../static/css/main.css?ver=1116">
     <link rel="stylesheet" href="../../static/css/link.css">
     <link rel="stylesheet" href="../../static/css/top.css">
-    <link rel="stylesheet" href="../../static/css/01_cpu.css">
+    <link rel="stylesheet" href="../../static/css/button.css">
+    <link rel="stylesheet" href="../../static/css/14_speaker.css">
   </head>
   
   <body>
     <div class="wrap" id="wrap">
       <div class="background" id='background'>
+
+        <a class="acp" href="/login">
+          <div class="acb">
+            <img class="acb_img" src={{user_icom}} onerror="this.style.display='none'">
+            <div class="acb_text">LOG IN</div>
+          </div>
+        </a>
+        
         <div class="link">
           <div class="parent">
             <div class="menu_hex home_hex"><a href="index"><div class="menu_hex_text">HOME</div></a></div>
@@ -21,6 +30,21 @@
             <div class="menu_hex accessory_hex"><div class="menu_hex_text">ACCESSORY</div></div>
             <div class="menu_hex user_hex"><div class="menu_hex_text">USER</div></div>
             <div class="menu_hex contact_hex"><div class="menu_hex_text">CONTACT</div></div>
+          </div>
+
+          <div class="hc1">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="hc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="pc1">
@@ -42,11 +66,15 @@
             <div class="trc_hex"></div>
             <div class="menu_hex monitor_hex"><a href="11m"><div class="menu_hex_text">MONITOR</div></a></div>
             <div class="menu_hex key_hex"><a href="12m"><div class="menu_hex_text">KEY BOARD</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
           <div class="ac2">
             <div class="trc_hex"></div>
             <div class="menu_hex mouse_hex"><a href="13m"><div class="menu_hex_text">MOUSE</div></a></div>
             <div class="menu_hex speaker_hex"><a href="14m"><div class="menu_hex_text">SPEAKER</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="uc1">
@@ -54,6 +82,14 @@
             <div class="trc_hex"></div>
             <div class="menu_hex account_hex"><a href="account"><div class="menu_hex_text">ACCOUNT</div></a></div>
             <div class="menu_hex favorite_hex"><a href="favorite"><div class="menu_hex_text">FAVORITE</div></a></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="uc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="cc1">
@@ -61,16 +97,9 @@
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="menu_hex member_hex"><a href="member"><div class="menu_hex_text">MEMBER</div></a></div>
-          </div>
-
-          <div class="trc1">
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
             <div class="trc_hex"></div>
           </div>
-          <div class="trc2">
+          <div class="cc2">
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
@@ -87,63 +116,9 @@
         </div>
 
         <div class="request">
-          <div class="sg1"  id="Search1">
-            <!-- <div class="ibox"><input type="text" placeholder="Lowest Price" id="cpu_low_price"></div>
-            <div class="ibox"><input type="text" placeholder="Highest Price" id="cpu_high_price"></div> -->
-          </div>
-          <div class="sg2" id="Search2">
-            <!-- <select class="sbox" id="cpu_socket_value">
-              <option value="">Socket</option>
-              <option value="Socket AM4">Socket AM4</option>
-              <option value="LGA1151">LGA1151</option>
-              <option value="LGA1200">LGA1200</option>
-              <option value="LGA2066">LGA2066</option>
-            </select>
-            <select class="sbox" id="cpu_clock_value">
-              <option value="">Clock</option>
-                <option value="2.7">2.7</option>
-                <option value="2.8">2.8</option>
-                <option value="3.0">3.0</option>
-                <option value="3.1">3.1</option>
-                <option value="3.3">3.3</option>
-                <option value="3.4">3.4</option>
-                <option value="3.5">3.5</option>
-                <option value="3.6">3.6</option>
-                <option value="3.7">3.7</option>
-                <option value="3.8">3.8</option>
-                <option value="3.9">3.9</option>
-                <option value="4.1">4.1</option>
-                <option value="4.2">4.2</option>
-            </select> -->
-          </div>
-          <div class="sg3"  id="Search3">
-            <!-- <select class="sbox" id="cpu_thread_value">
-              <option value="">Thread</option>
-                <option value="スレッド数：2">2</option>
-                <option value="スレッド数：4">4</option>
-                <option value="スレッド数：6">6</option>
-                <option value="スレッド数：8">8</option>
-                <option value="スレッド数：12">12</option>
-                <option value="スレッド数：16">16</option>
-                <option value="スレッド数：20">20</option>
-                <option value="スレッド数：24">24</option>
-                <option value="スレッド数：28">28</option>
-                <option value="スレッド数：32">32</option>
-                <option value="スレッド数：36">36</option>
-            </select>
-            <select class="sbox" id="cpu_core_value">
-              <option value="">Core</option>
-                <option value="コア数：2">2</option>
-                <option value="コア数：4">4</option>
-                <option value="コア数：6">6</option>
-                <option value="コア数：8">8</option>
-                <option value="コア数：10">10</option>
-                <option value="コア数：12">12</option>
-                <option value="コア数：14">14</option>
-                <option value="コア数：16">16</option>
-                <option value="コア数：18">18</option>
-              </select> -->
-          </div>
+          <div class="sg1" id="Search1"></div>
+          <div class="sg2" id="Search2"></div>
+          <div class="sg3" id="Search3"></div>
         </div>
 
         <div class="main" id="main">
@@ -163,16 +138,15 @@
             </div>
             <div class="info">
               <h1 class="name">{{speaker.product_name}}</h1>
-              <div class="display_selectedItem">
-                <img class="selected_img" src="../../static/images/like-on.png">
-                ¥{{speaker.price}}
+              <div class="display_selectedItem" onclick="change_money(this.id);">
+                <img class="selected_img" src="../../static/images/d.png">
+                ¥{{speaker.price[1][1]}}
               </div>
               <ul class="select_box">
-                <li><img src="../../static/images/like-on.png">¥{{speaker.price}}</li>
-                <li><img src="../../static/images/Aicom.png">¥{{speaker.price}}</li>
-                <li><img src="../../static/images/Dicom.png">¥{{speaker.price}}</li>
+                <li><img src="../../static/images/d.png">¥{{speaker.price[1][1]}}</li>
+                <li><img src="../../static/images/a.png">¥{{speaker.price[0][1]}}</li>
+                <li><img src="../../static/images/k.png">¥{{speaker.price[2][1]}}</li>
               </ul>
-              <h2 class="text">{{speaker.info}}</h2>
             </div>
           </div>
           {% endfor %}

@@ -231,11 +231,12 @@ button.hidden {
   top: 35px;
   left: 5px;
   width: 450px;
+  padding-left: 5px;
   height: 30px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 14px;
-  border-bottom: solid 2px black;
+  text-align: left;
+  font-size: 16px;
   color: black;
 }
 
@@ -243,8 +244,8 @@ button.hidden {
   overflow: hidden;
   position: absolute;
   top: 35px;
-  left: 450px;
-  width: 220px;
+  left: 455px;
+  width: 210px;
   height: 70px;
   line-height: 3;
   text-align: center;
@@ -259,10 +260,11 @@ button.hidden {
   position: absolute;
   top: 65px;
   left: 5px;
-  padding: 0px 5px  ;
+  padding: 0px 30px  ;
   width: 450px;
   height: 40px;
-  font-size: 12px;
+  text-align: left;
+  font-size: 13px;
   font-weight: normal;
   color: black;
 }

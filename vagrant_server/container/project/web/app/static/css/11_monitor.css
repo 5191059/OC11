@@ -1,4 +1,7 @@
 /* LINK */
+.ac1 { display: flex;}
+.ac2 { display: flex;}
+
 .monitor_hex::after { background: black; }
 .monitor_hex .menu_hex_text { color: white; }
 .monitor_hex:hover .menu_hex_text { color: black; }
@@ -13,6 +16,3 @@ input::-ms-input-placeholder { color: gray; }
 
 .sbox { color: gray; }
 .sbox:focus { border-color: gray; }
-
-.ac1 { display: flex;}
-.ac2 { display: flex;}

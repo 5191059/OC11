@@ -1,4 +1,19 @@
 window.onload = function() {
+  var tmp = document.getElementsByClassName("info");
+  var tmp2 = document.getElementsByClassName("hex");
+  var tmp3 = document.getElementsByClassName('select_box');
+  var tmp4 = document.getElementsByClassName('card');
+  var tmp5 = document.getElementsByClassName('display_selectedItem');
+  var moji = "graphicID";
+  
+  for(var i=0;i<=tmp.length-1;i++){
+      //id追加
+      tmp[i].setAttribute("id",moji+i);
+      tmp2[i].setAttribute("id",'hex' + i);
+      tmp3[i].setAttribute("id","price" + i)
+      tmp4[i].setAttribute("id", i)
+      tmp5[i].setAttribute("id", i)
+  }
     height_repair();
 };
   
@@ -11,36 +26,10 @@ function height_repair(){
     })
 };
 
-function remake_box(){
-    var maker_name = $('#graphic_GPU_maker').val()
-    if (maker_name == 'NVIDIA'){
-        $('#graphic_NVIDIA_value').css({
-            "display": "flex"
-        })
-        $('#graphic_AMD_value').css({
-            "display": "none"
-        })
-    } else if (maker_name == 'AMD') {
-        $('#graphic_NVIDIA_value').css({
-            "display": "none"
-        })
-        $('#graphic_AMD_value').css({
-            "display": "flex"
-        })
-    } else {
-        $('#graphic_NVIDIA_value').css({
-            "display": "none"
-        })
-        $('#graphic_AMD_value').css({
-            "display": "none"
-        })
-    };
-}
   
 $(function () {
     searchWord = function(){
-      var   search_nvidiaText = $('#graphic_NVIDIA_value').val(),
-            search_amdText = $('#graphic_AMD_value').val(),
+      var   search_GPUText = $('#graphic_GPU_value').val(),
             search_low_price = $('#graphic_low_price').val(),
             search_high_price = $('#graphic_high_price').val(),
             targetText,
@@ -80,12 +69,8 @@ $(function () {
         targetText = $(this).text();
 
         // 検索対象となるリストに入力された文字列が存在するかどうかを判断
-        if (targetText.indexOf(search_nvidiaText) != -1) {
-            if (targetText.indexOf(search_amdText) != -1){
-                ; //  何もしない
-            } else {
-                $(this).addClass('hidden');
-            }
+        if (targetText.indexOf(search_GPUText) != -1) {
+            ; //  何もしない
         } else {
           $(this).addClass('hidden');
         }
@@ -94,8 +79,7 @@ $(function () {
     };
 
     searchWord2 = function(){
-      var   search_nvidiaText = $('#graphic_NVIDIA_value').val(),
-            search_amdText = $('#graphic_AMD_value').val(),
+      var   search_GPUText = $('#graphic_GPU_value').val(),
             search_low_price = $('#graphic_low_price').val(),
             search_high_price = $('#graphic_high_price').val(),
             targetText,
@@ -108,12 +92,8 @@ $(function () {
         targetText = $(this).text();
 
         // 検索対象となるリストに入力された文字列が存在するかどうかを判断
-        if (targetText.indexOf(search_nvidiaText) != -1) {
-            if (targetText.indexOf(search_amdText) != -1){
-              $(this).removeClass('hidden');
-            } else {
-                $(this).addClass('hidden');
-            }
+        if (targetText.indexOf(search_GPUText) != -1) {
+          $(this).removeClass('hidden');
         } else {
           $(this).addClass('hidden');
         }
@@ -149,6 +129,5 @@ $(function () {
     };
     // searchWordの実行
     $('#Search1').on('change', searchWord);
-    $('#Search2').on('change', remake_box);
-    $('#Search3').on('change', searchWord2);
+    $('#Search2').on('change', searchWord2);
 });

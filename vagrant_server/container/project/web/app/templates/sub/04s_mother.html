@@ -27,48 +27,29 @@
           <div class="sg2"  id="Search2">
             <select class="sbox" id="mother_socket_value">
               <option value="">Socket</option>
-              <option value="●ソケット形状：Socket AM4">Socket AM4</option>
-              <option value="●ソケット形状：LGA1150">LGA1150</option>
-              <option value="●ソケット形状：LGA1151">LGA1151</option>
-              <option value="●ソケット形状：LGA1155">LGA1155</option>
-              <option value="●ソケット形状：LGA1200,●ソケット形状：LGA 1200">LGA1200</option>
-              <option value="●ソケット形状：LGA2066">LGA2066</option>
+              {% for pro_info in info.Socket %}
+                <option value="Socket:{{pro_info.Socket}}">Socket:{{pro_info.Socket}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="mother_TipSet_value">
               <option value="">TipSet</option>
-                <option value="●チップセット：AMD A320">AMD A320</option>
-                <option value="●チップセット：AMD A520">AMD A520</option>
-                <option value="●チップセット：AMD B450">AMD B450</option>
-                <option value="●チップセット：AMD B550">AMD B550</option>
-                <option value="●チップセット：AMD X570">AMD X570</option>
-                <option value="●チップセット：Intel B85">Intel B85</option>
-                <option value="●チップセット：Intel B360">Intel B360</option>
-                <option value="●チップセット：Intel B365">Intel B365</option>
-                <option value="●チップセット：Intel B460">Intel B460</option>
-                <option value="●チップセット：Intel H61">Intel H61</option>
-                <option value="●チップセット：Intel H110">Intel H110</option>
-                <option value="●チップセット：Intel H310">Intel H310</option>
-                <option value="●チップセット：Intel H370">Intel H370</option>
-                <option value="●チップセット：Intel H410">Intel H410</option>
-                <option value="●チップセット：Intel H470">Intel H470</option>
-                <option value="●チップセット：Intel X299">Intel X299</option>
-                <option value="●チップセット：Intel Z390">Intel Z390</option>
-                <option value="●チップセット：Intel Z490">Intel Z490</option>
+              {% for pro_info in info.chipset %}
+                <option value="TipSet:{{pro_info.chipset}}">TipSet:{{pro_info.chipset}}</option>
+              {% endfor %}
             </select>
           </div>
           <div class="sg3"  id="Search3">
             <select class="sbox" id="mother_form_factor_value">
               <option value="">Form Factor</option>
-                <option value="●フォームファクタ：ATX">ATX</option>
-                <option value="●フォームファクタ：MicroATX">MicroATX</option>
-                <option value="●フォームファクタ：E-ATX">E-ATX</option>
-                <option value="●フォームファクタ：Mini-ATX">Mini-ATX</option>
+              {% for pro_info in info.formfactor %}
+                <option value="Form Factor:{{pro_info.formfactor}}">Form Factor:{{pro_info.formfactor}}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
 
-
         <div class="sub">
+
           {% for mother in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -77,12 +58,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{mother.product_name}}</h1>
-                <h3 class="price">¥{{mother.price}}</h3>
-                <h2 class="text">{{mother.info}}</h2>
+                <h3 class="price">¥{{mother.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>Socket:{{mother.info[0]}} TipSet:{{mother.info[1]}} Form Factor:{{mother.info[2]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+          
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

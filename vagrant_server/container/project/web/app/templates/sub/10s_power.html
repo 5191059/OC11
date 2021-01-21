@@ -27,23 +27,24 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="power_wat_value">
               <option value="">Total Wat</option>
-              <option value="300,400,450">~499W</option>
-              <option value="500,550">500th W</option>
-              <option value="600,650">600th W</option>
-              <option value="700,750">700th W</option>
-              <option value="800,850">800th W</option>
-              <option value="1000,1050,1200">1000th W</option>
+              {% for pro_info in info.capacity %}
+                <option value="Total Wat:{{pro_info.capacity}}">Total Wat:{{pro_info.capacity}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="power_certification_value">
               <option value="">80PLUS認証</option>
-                <option value="●認証：80PLUS STANDARD">80PLUS STANDARD</option>
-                <option value="●認証：80PLUS BRONZE">80PLUS BRONZE</option>
-                <option value="●認証：80PLUS GOLD">80PLUS GOLD</option>
+                <option value="80PLUS認証:Standard">80PLUS認証:Standard</option>
+                <option value="80PLUS認証:Bronze">80PLUS認証:Bronze</option>
+                <option value="80PLUS認証:Silver">80PLUS認証:Silver</option>
+                <option value="80PLUS認証:Gold">80PLUS認証:Gold</option>
+                <option value="80PLUS認証:Platinum">80PLUS認証:Platinum</option>
+                <option value="80PLUS認証:Titanium">80PLUS認証:Titanium</option>
             </select>
           </div>
         </div>
 
         <div class="sub">
+
           {% for power in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -52,12 +53,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{power.product_name}}</h1>
-                <h3 class="price">¥{{power.price}}</h3>
-                <h2 class="text">{{power.info}}</h2>
+                <h3 class="price">¥{{power.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>Total Wat:{{power.info[0]}} 80PLUS認証:{{power.info[1]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+          
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

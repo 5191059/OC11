@@ -1,4 +1,7 @@
 /* LINK */
+.pc1 { display: flex;}
+.pc2 { display: flex;}
+
 .graphic_hex::after { background: black; }
 .graphic_hex .menu_hex_text { color: white; }
 .graphic_hex:hover .menu_hex_text { color: black; }
@@ -21,6 +24,3 @@ input::-ms-input-placeholder { color: gray; }
 #graphic_AMD_value{
     display: none;
 }
-
-.pc1 { display: flex;}
-.pc2 { display: flex;}

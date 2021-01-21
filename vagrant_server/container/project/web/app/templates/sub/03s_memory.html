@@ -27,47 +27,21 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="memory_standard_value">
               <option value="">Standards</option>
-                <option value="●規格：DDR3-1600">DDR3-1600</option>
-                <option value="●規格：DDR3L-1600">DDR3L-1600</option>
-                <option value="●規格：DDR4-2133">DDR4-2133</option>
-                <option value="●規格：DDR4-2400">DDR4-2400</option>
-                <option value="●規格：DDR4-2666">DDR4-2666</option>
-                <option value="●規格：DDR4-3000">DDR4-3000</option>
-                <option value="●規格：DDR4-3200">DDR4-3200</option>
-                <option value="●規格：DDR4-3600">DDR4-3600</option>
-                <option value="●規格：DDR4-4000">DDR4-4000</option>
-                <option value="●規格：DDR4-4133">DDR4-4133</option>
-                <option value="●規格：DDR4-4266">DDR4-4266</option>
+              {% for pro_info in info.mem_stndrd%}
+                <option value="Standards:{{pro_info.mem_stndrd}}">Standards:{{pro_info.mem_stndrd}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="memory_capacity_value">
               <option value="">Capacity</option>
-                <option value="●容量：4GB">4GB</option>
-                <option value="●容量：8GB">8GB</option>
-                <option value="●容量：16GB">16GB</option>
-                <option value="●容量：32GB">32GB</option>
-                <option value="●容量：64GB">64GB</option>
-                <option value="●容量：128GB">128GB</option>
-            </select>
-          </div>
-          <div class="sg3" id="Search3">
-            <select class="sbox" id="memory_speed_value">
-              <option value="">Write Speed</option>
-              <option value="●速度：PC3-12800">PC3-12800</option>
-              <option value="●速度：PC3L-12800">PC3L-12800</option>
-              <option value="●速度：PC4-17000">PC4-17000</option>
-              <option value="●速度：PC4-19200">PC4-19200</option>
-              <option value="●速度：PC4-21300">PC4-21300</option>
-              <option value="●速度：PC4-24000">PC4-24000</option>
-              <option value="●速度：PC4-25600">PC4-25600</option>
-              <option value="●速度：PC4-28800">PC4-28800</option>
-              <option value="●速度：PC4-32000">PC4-32000</option>
-              <option value="●速度：PC4-33000">PC4-33000</option>
-              <option value="●速度：PC4-34100">PC4-34100</option>
+              {% for pro_info in info.capacity%}
+                <option value="Capacity:{{pro_info.capacity}}">Capacity:{{pro_info.capacity}}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
 
         <div class="sub">
+          
           {% for memory in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -76,12 +50,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{memory.product_name}}</h1>
-                <h3 class="price">¥{{memory.price}}</h3>
-                <h2 class="text">{{memory.info}}</h2>
+                <h3 class="price">¥{{memory.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>Standards:{{memory.info[0]}} >Capacity:{{memory.info[1]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

@@ -34,6 +34,9 @@ body {
 }
 
 /* LINK */
+.hc1 { display: flex;}
+.hc2 { display: flex;}
+
 .home_hex::after { background: black; }
 .home_hex .menu_hex_text { color: white; }
 .home_hex:hover .menu_hex_text { color: black; }
@@ -231,7 +234,7 @@ body {
   line-height: 4.5;
   font-size: 20px;
   font-weight: normal;
-  color: #53C1D2;
+  color: black;
 }
 
 .hex {

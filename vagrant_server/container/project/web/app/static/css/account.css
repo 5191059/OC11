@@ -26,6 +26,9 @@ body {
 }
 
 /* LINK */
+.uc1 { display: flex;}
+.uc2 { display: flex;}
+
 .account_hex::after { background: black; }
 .account_hex .menu_hex_text { color: white; }
 .account_hex:hover .menu_hex_text { color: black; }
@@ -86,6 +89,7 @@ body {
   width: 300px;
   height: 80px;
   border-bottom: solid 1px black;
+  text-align: center;
   appearance: none;
   -webkit-appearance:none
 }
@@ -135,6 +139,3 @@ body {
 .hex::after {
   background: white;
 }
-
-.uc1 { display: flex;}
-.uc2 { display: flex;}

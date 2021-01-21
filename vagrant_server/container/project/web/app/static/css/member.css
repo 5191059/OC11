@@ -26,6 +26,9 @@ body {
 }
 
 /* LINK */
+.cc1 { display: flex;}
+.cc2 { display: flex;}
+
 .member_hex::after { background: black; }
 .member_hex .menu_hex_text { color: white; }
 .member_hex:hover .menu_hex_text { color: black; }
@@ -113,7 +116,7 @@ body {
   object-position: center;
   display: block;
   position: absolute;
-  top: -45.6px;
+  top: -45px;
   left: -1px;
   width: 101%;
   height: 200%;
@@ -181,6 +184,3 @@ body {
   width: 35px;
   height: 35px;
 }
-
-.cc1 { display: flex;}
-.cc2 { display: flex;}

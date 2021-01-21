@@ -1,8 +1,8 @@
-from cord.main import create
-from cord.main import scraping
-from cord.cord.in_data import all_in
-from cord.main import insertmain
-from cord.main import testdata
+from code.main import create
+from code.main import scraping
+from code.code.in_data import all_in
+from code.main import insertmain
+from code.main import testdata
 
 
 if __name__=='__main__':

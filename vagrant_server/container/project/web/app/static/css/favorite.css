@@ -26,6 +26,9 @@ body {
 }
 
 /* LINK */
+.uc1 { display: flex;}
+.uc2 { display: flex;}
+
 .favorite_hex::after { background: black; }
 .favorite_hex .menu_hex_text { color: white; }
 .favorite_hex:hover .menu_hex_text { color: black; }
@@ -443,6 +446,3 @@ body {
 .trc_text::-webkit-scrollbar {
   display:none;
 }
-
-.uc1 { display: flex;}
-.uc2 { display: flex;}

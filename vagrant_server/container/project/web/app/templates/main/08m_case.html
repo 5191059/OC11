@@ -8,12 +8,21 @@
     <link rel="stylesheet" href="../../static/css/main.css?ver=1117">
     <link rel="stylesheet" href="../../static/css/link.css">
     <link rel="stylesheet" href="../../static/css/top.css">
+    <link rel="stylesheet" href="../../static/css/button.css">
     <link rel="stylesheet" href="../../static/css/08_case.css">
   </head>
   
   <body>
     <div class="wrap" id="wrap">
       <div class="background" id='background'>
+
+        <a class="acp" href="/login">
+          <div class="acb">
+            <img class="acb_img" src={{user_icom}} onerror="this.style.display='none'">
+            <div class="acb_text">LOG IN</div>
+          </div>
+        </a>
+        
         <div class="link">
           <div class="parent">
             <div class="menu_hex home_hex"><a href="index"><div class="menu_hex_text">HOME</div></a></div>
@@ -21,6 +30,21 @@
             <div class="menu_hex accessory_hex"><div class="menu_hex_text">ACCESSORY</div></div>
             <div class="menu_hex user_hex"><div class="menu_hex_text">USER</div></div>
             <div class="menu_hex contact_hex"><div class="menu_hex_text">CONTACT</div></div>
+          </div>
+
+          <div class="hc1">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="hc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="pc1">
@@ -42,11 +66,15 @@
             <div class="trc_hex"></div>
             <div class="menu_hex monitor_hex"><a href="11m"><div class="menu_hex_text">MONITOR</div></a></div>
             <div class="menu_hex key_hex"><a href="12m"><div class="menu_hex_text">KEY BOARD</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
           <div class="ac2">
             <div class="trc_hex"></div>
             <div class="menu_hex mouse_hex"><a href="13m"><div class="menu_hex_text">MOUSE</div></a></div>
             <div class="menu_hex speaker_hex"><a href="14m"><div class="menu_hex_text">SPEAKER</div></a></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="uc1">
@@ -54,6 +82,14 @@
             <div class="trc_hex"></div>
             <div class="menu_hex account_hex"><a href="account"><div class="menu_hex_text">ACCOUNT</div></a></div>
             <div class="menu_hex favorite_hex"><a href="favorite"><div class="menu_hex_text">FAVORITE</div></a></div>
+            <div class="trc_hex"></div>
+          </div>
+          <div class="uc2">
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
+            <div class="trc_hex"></div>
           </div>
 
           <div class="cc1">
@@ -61,16 +97,9 @@
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="menu_hex member_hex"><a href="member"><div class="menu_hex_text">MEMBER</div></a></div>
-          </div>
-
-          <div class="trc1">
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
-            <div class="trc_hex"></div>
             <div class="trc_hex"></div>
           </div>
-          <div class="trc2">
+          <div class="cc2">
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
             <div class="trc_hex"></div>
@@ -94,10 +123,10 @@
           <div class="sg2" id="Search2">
             <select class="sbox" id="case_collesMB_value">
               <option value="">対応MB規格</option>
-              <option value="：E-ATX,/ E-ATX">E-ATX</option>
-              <option value="：ATX,/ ATX">ATX</option>
-              <option value="：MicroATX,/ MicroATX">MicroATX</option>
-              <option value="：Mini-ITX,/ Mini-ITX">Mini-ITX</option>
+              <option value=":E-ATX,,E-ATX">E-ATX</option>
+              <option value=":ATX">ATX</option>
+              <option value=":MicroATX,,MicroATX">MicroATX</option>
+              <option value=":Mini-ITX,,Mini-ITX">Mini-ITX</option>
             </select>
           </div>
         </div>
@@ -106,29 +135,30 @@
 
           {% for case in lst %}
           <div class="card">
-            <!-- <div class="triangle1">
-              <img class="dospara" src="../../static/images/Dicom.png">
-              <img class="amazon" src="../../static/images/Aicom.png">
-            </div> -->
-            <!-- <div class="triangle2">
+            {% if current_user.is_authenticated %}
+            <div class="triangle2" onclick="favorite(this.id, 'caseID', '{{client_id}}');">
               <img class="like" src="../../static/images/like-off.png">
               <img class="liked" src="../../static/images/like-on.png">
-            </div> -->
+            </div>
+            {% endif %}
             <div class="hex">
               <a href={{case.url}}><img class="hex_image" src={{case.image}} alt=""></a>
             </div>
             <div class="info">
               <h1 class="name">{{case.product_name}}</h1>
-              <div class="display_selectedItem">
-                <img class="selected_img" src="../../static/images/like-on.png">
-                ¥{{case.price}}
+              <div class="display_selectedItem" onclick="change_money(this.id);">
+                <img class="selected_img" src="../../static/images/d.png">
+                ¥{{case.price[1][1]}}
               </div>
               <ul class="select_box">
-                <li><img src="../../static/images/like-on.png">¥{{case.price}}</li>
-                <li><img src="../../static/images/Aicom.png">¥{{case.price}}</li>
-                <li><img src="../../static/images/Dicom.png">¥{{case.price}}</li>
+                <li><img src="../../static/images/d.png">¥{{case.price[1][1]}}</li>
+                <li><img src="../../static/images/a.png">¥{{case.price[0][1]}}</li>
+                <li><img src="../../static/images/k.png">¥{{case.price[2][1]}}</li>
+                <li><img src="../../static/images/s.png">¥{{case.price[3][1]}}</li>
               </ul>
-              <h2 class="text">{{case.info}}</h2>
+              <h2 class="text">
+                <p>対応MB規格:{{case.info[0]}}</p>
+              </h2>
             </div>
           </div>
           {% endfor %}
@@ -137,6 +167,9 @@
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>
     </div>
+    {% if current_user.is_authenticated %}
+    <script src="../../static/js/favorite.js?ver=20210115"></script>
+    {% endif %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="../../static/js/case_main.js?ver=1139"></script>

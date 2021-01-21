@@ -26,34 +26,30 @@
           </div>
           <div class="sg2" id="Search2">
             <select class="sbox" id="hdd_cash_value">
-              <option value="">Cash</option>
-                <option value="●キャッシュ：8MB">8MB</option>
-                <option value="●キャッシュ：16MB">16MB</option>
-                <option value="●キャッシュ：32MB">32MB</option>
-                <option value="●キャッシュ：64MB">64MB</option>
-                <option value="●キャッシュ：128MB">128MB</option>
-                <option value="●キャッシュ：256MB">256MB</option>
-                <option value="●キャッシュ：512MB">512MB</option>
+              <option value="">RPM</option>
+              {% for pro_info in info.rpm %}
+                <option value="RPM:{{pro_info.rpm}}">RPM:{{pro_info.rpm}}</option>
+              {% endfor %}
             </select>
             <select class="sbox" id="hdd_capacity_value">
               <option value="">Capacity</option>
-                <option value="500GB,0.5TB">500GB</option>
-                <option value="●ディスク容量(TB)：1TB">1TB</option>
-                <option value="●ディスク容量(TB)：2TB">2TB</option>
-                <option value="●ディスク容量(TB)：3TB">3TB</option>
-                <option value="●ディスク容量(TB)：4TB">4TB</option>
-                <option value="●ディスク容量(TB)：6TB">6TB</option>
-                <option value="●ディスク容量(TB)：8TB">8TB</option>
-                <option value="●ディスク容量(TB)：10TB">10TB</option>
-                <option value="●ディスク容量(TB)：12TB">12TB</option>
-                <option value="●ディスク容量(TB)：14TB">14TB</option>
-                <option value="●ディスク容量(TB)：16TB">16TB</option>
-                <option value="●ディスク容量(TB)：18TB">18TB</option>
+              {% for pro_info in info.capacity %}
+                <option value="Capacity:{{pro_info.capacity}}">Capacity:{{pro_info.capacity}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="sg3" id="Search3">
+            <select class="sbox" id="hdd_size_value">
+              <option value="">Size</option>
+              {% for pro_info in info.size %}
+                <option value="Size:{{pro_info.size}}">Size:{{pro_info.size}}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
 
         <div class="sub">
+
           {% for hdd in lst %}
           <button class="button" type="button" name="button" value="add" onclick="addPro(this.id);">
             <div class="card">
@@ -62,12 +58,15 @@
               </div>
               <div class="info">
                 <h1 class="name">{{hdd.product_name}}</h1>
-                <h3 class="price">¥{{hdd.price}}</h3>
-                <h2 class="text">{{hdd.info}}</h2>
+                <h3 class="price">¥{{hdd.price[1][1]}}</h3>
+                <h2 class="text">
+                  <p>RPM:{{hdd.info[0]}} Capacity:{{hdd.info[1]}} Size:{{hdd.info[2]}}</p>
+                </h2>
               </div>
             </div>
           </button>
           {% endfor %}
+          
         </div>
         <p class="pagetop"><a href="#wrap">▲</a></p>
       </div>

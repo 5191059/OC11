@@ -21,6 +21,9 @@ from User import User
 from secret import secret
 from db_con import get_info
 from db_con import get_table
+from db_con import get_summary
+from db_sort import sort_lst
+from db_insert import insert_product
 
 secret()
 
@@ -60,37 +63,33 @@ def get_google_provider_cfg():
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return render_template('index.html', user_icom=current_user.profile_pic)
+    else:
+        return render_template('index.html')
 
 @app.route('/index', methods=['GET'])
 def home2():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return render_template('index.html', user_icom=current_user.profile_pic)
+    else:
+        return render_template('index.html')
 
-main_html_list = [
-    '01m',
-    '02m',
-    '03m',
-    '04m',
-    '05m',
-    '06m',
-    '07m',
-    '08m',
-    '09m',
-    '10m'
-]
+name_lst = [
+    'Cpu',
+    'cpuCooler',
+    'Memory',
+    'Motherboard',
+    'GPU',
+    'SSD',
+    'HDD', 
+    'Cases', 
+    'caseCooler', 
+    'Power', 
+    ]
 
-sub_html_list = [
-    '01s',
-    '02s',
-    '03s',
-    '04s',
-    '05s',
-    '06s',
-    '07s',
-    '08s',
-    '09s',
-    '10s'
-]
+main_html_list = {'{}{}'.format(str(i).zfill(2), 'm'): name_lst[i-1] for i in range(1, 11)}
+sub_html_list = {'{}{}'.format(str(i).zfill(2), 's'): name_lst[i-1] for i in range(1, 11)}
 
 
 def ret_html(html):
@@ -121,61 +120,88 @@ def ret_html(html):
 
 def ret_lst(html):
     parts_lst = get_info()
-    name_lst = [
-        'Cpu',
-        'cpuCooler',
-        'Memory',
-        'Motherboard',
-        'GPU',
-        'SSD',
-        'HDD', 
-        'Cases', 
-        'caseCooler', 
-        'Power', 
-        ]
     lst = {}
     for i in range(1, 11):
-        lst['{}{}'.format(str(i).zfill(2), 'm')] = parts_lst[name_lst[i-1]]
-        lst['{}{}'.format(str(i).zfill(2), 's')] = parts_lst[name_lst[i-1]]
+        lst['{}{}'.format(str(i).zfill(2), 'm')] = sort_lst(name_lst[i-1], parts_lst[name_lst[i-1]])
+        lst['{}{}'.format(str(i).zfill(2), 's')] = sort_lst(name_lst[i-1], parts_lst[name_lst[i-1]])
 
     return lst[html]
-
-
-@app.route('/<html>', methods=['GET'])
-def hello_main(html):
-    if html in main_html_list:
-        return render_template('/main/' + ret_html(html), lst=ret_lst(html))
-
-    return render_template('index.html')
-
-
-@app.route('/sub/<html>', methods=['GET'])
-def hello_sub(html):
-    if html in sub_html_list:
-        return render_template('/sub/' + ret_html(html), lst=ret_lst(html))
-
-    return render_template('index.html')
-
-
-@app.route('/master')
-def master():
-    return render_template('about/master.html')
-
-
-@app.route('/user', methods=['GET'])
-def user():
-    return render_template('user.html')
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.get(user_id)
 
+@app.route("/push", methods=["POST"])
+def addlike():
+    product_name = request.form['Product_name']
+    product_src = request.form['Product_src']
+    User_id = request.form['User_id']
+    insert_product([product_name, product_src, User_id])
+
+    return 'OK!'
+
+
+@app.route('/<html>', methods=['GET'])
+def hello_main(html):
+    if html in main_html_list:
+            if current_user.is_authenticated:
+                client = User.get_client(current_user.id)
+                return render_template('/main/' + ret_html(html), lst=ret_lst(html), info = get_summary(main_html_list[html]), user_icom=current_user.profile_pic, client_id=int(client["client"]))
+            else:
+                return render_template('/main/' + ret_html(html), lst=ret_lst(html), info = get_summary(main_html_list[html]))
+
+    return render_template('user/error.html')
+
+
+@app.route('/sub/<html>', methods=['GET'])
+def hello_sub(html):
+    if html in sub_html_list:
+            if current_user.is_authenticated:
+                return render_template('/sub/' + ret_html(html), lst=ret_lst(html), info = get_summary(sub_html_list[html]), user_icom=current_user.profile_pic)
+            else:
+                return render_template('/sub/' + ret_html(html), lst=ret_lst(html), info = get_summary(sub_html_list[html]))
+
+    return render_template('user/error.html')
+
+
+@app.route('/master')
+def master():
+        if current_user.is_authenticated:
+            return render_template('about/master.html', user_icom=current_user.profile_pic)
+        else:
+            return render_template('about/master.html')
+    
+
+
+@app.route('/user', methods=['GET'])
+def user():
+        if current_user.is_authenticated:
+            return render_template('user.html', user_icom=current_user.profile_pic)
+        else:
+            return render_template('user.html')
+    
+
 @app.route("/account")
 def index():
     if current_user.is_authenticated:
-        render_template('user/account.html', user_icom=current_user.profile_pic, user_name=current_user.name)
+        return render_template('user/account.html', user_icom=current_user.profile_pic, user_name=current_user.name)
     else:
         return render_template('user/account.html')
+
+@app.route("/favorite")
+def favorite():
+    if current_user.is_authenticated:
+        return render_template('user/favorite.html', user_icom=current_user.profile_pic)
+    else:
+        return render_template('user/favorite.html')
+
+@app.route("/member")
+def member():
+    if current_user.is_authenticated:
+        return render_template('user/member.html', user_icom=current_user.profile_pic)
+    else:
+        return render_template('user/member.html')
+    
 
 @app.route("/login")
 def login():

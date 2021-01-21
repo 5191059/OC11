@@ -1,4 +1,19 @@
 window.onload = function() {
+  var tmp = document.getElementsByClassName("info");
+  var tmp2 = document.getElementsByClassName("hex");
+  var tmp3 = document.getElementsByClassName('select_box');
+  var tmp4 = document.getElementsByClassName('card');
+  var tmp5 = document.getElementsByClassName('display_selectedItem');
+  var moji = "coolerID";
+
+  for(var i=0;i<=tmp.length-1;i++){
+      //id追加
+      tmp[i].setAttribute("id",moji+i);
+      tmp2[i].setAttribute("id",'hex' + i);
+      tmp3[i].setAttribute("id","price" + i)
+      tmp4[i].setAttribute("id", i)
+      tmp5[i].setAttribute("id", i)
+  }
     height_repair();
   };
   

@@ -1,4 +1,7 @@
 /* LINK */
+.pc1 { display: flex;}
+.pc2 { display: flex;}
+
 .fan_hex::after { background: black; }
 .fan_hex .menu_hex_text { color: white; }
 .fan_hex:hover .menu_hex_text { color: black; }
@@ -13,6 +16,3 @@ input::-ms-input-placeholder { color: gray; }
 
 .sbox { color: gray; }
 .sbox:focus { border-color: gray; }
-
-.pc1 { display: flex;}
-.pc2 { display: flex;}
