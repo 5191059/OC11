@@ -1,0 +1,44 @@
+dockerのコンテナ起動順
+
+最後まで読んでから実行してくだしい
+
+buildはすべて同時でよい
+upは
+docker-compes up -d pdb ※１
+docker-compes up pcdb
+docker-compes up -d pweb
+docker-compes up -d npro ※２
+の順番で起動する。
+
+※１
+pcdb起動後に/vagrant/container/project/data/mysqbkにあるp_sdb.sqlをpdbにコピーする。
+pcdbの起動はシェルファイルを挟まないので自分でpdbのログで起動確認をしてください。
+
+docker cp data/mysqbk/p_sdb.sql pdb:/mnt
+
+上記のコマンドを実行後にmasteruserでMySQLにログインしsourceコマンドを実行する。
+
+mysql -u masteruser -pmaster#36711
+
+use p_sdb
+
+source /mnt/p_sdb.sql
+
+すべてのクエリが完了すると、データベースが完成。
+データベースはdockerで/var/lib/mysqlにvoluemをかけているので一度データベースが
+完成してらバックアップが自動的に生成されるので次回からは、コンテナを消しても
+upをするだけでいい。
+
+※２
+nginxがうまく起動しないことがあるのでpweb実行したままnproを再起動してください
+
+すべての起動が確認出来たらブラウザで
+localhost:8081
+にアクセスしてみてください。
+
+次に、お気に入りの仕様書をよんでください
+
+
+
+
+
